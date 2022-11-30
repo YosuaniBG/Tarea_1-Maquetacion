@@ -25,7 +25,7 @@ body {
 }
 
 .small-btn {
-    font-size: 12px; 
+    font-size: 12px;
     padding: 7px 10px;
     border-radius: 5px;
 }
@@ -36,12 +36,13 @@ body {
     padding: 12px;
 }
 
-p{
+p {
     font-size: 16px;
 }
+
 /* ---------------- HEADER - NAVEGACIÓN -------------------------*/
 
-.header{
+.header {
     border-bottom: var(--borderLight);
 }
 
@@ -61,7 +62,11 @@ p{
     color: rgb(0, 0, 0);
 }
 
-.navbar{
+.menu-navegation {
+    display: none;
+}
+
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,11 +80,12 @@ p{
 }
 
 a.nav-link:hover {
-    color:rgb(52, 51, 51);
+    color: rgb(52, 51, 51);
 }
 
 .nav-item-btn {
     border: var(--borderLight);
+    transition: all .5s;
 }
 
 .nav-item-btn:hover {
@@ -101,25 +107,25 @@ a.nav-link:hover {
     position: relative;
     display: inline-block;
     flex-basis: 40%;
-    flex-grow: 1;  
+    flex-grow: 1;
 }
 
-.product-image img {  
+.product-image img {
     max-width: 100%;
 }
 
 .product-image span {
     position: absolute;
     top: 15px;
-    left:15px;
+    left: 15px;
     padding: 5px;
     background-color: rgb(34, 197, 94);
     color: rgb(255, 255, 255);
 }
 
-.producto-description  {
+.producto-description {
     flex-basis: 50%;
-    flex-grow: 1;  
+    flex-grow: 1;
 }
 
 .ofert {
@@ -146,10 +152,12 @@ a.nav-link:hover {
     border: var(--borderBlue);
     background-color: var(--btnColorBlue);
     color: rgb(255, 255, 255);
+    transition: all .5s;
 }
 
-.buy-btn:hover{
+.buy-btn:hover {
     opacity: 0.75;
+    transform: scale(1.05);
 }
 
 .feature-plus {
@@ -159,6 +167,7 @@ a.nav-link:hover {
     flex-wrap: wrap;
     gap: 20px;
 }
+
 .feature-plus-item {
     flex-basis: 30%;
     display: flex;
@@ -170,16 +179,16 @@ a.nav-link:hover {
 /* ---------------- SECTIONS 2 -----------------------------*/
 .accesories {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-content: center;
-    flex-wrap: wrap;
     padding-top: 20px;
     gap: 10px;
 }
 
 .accesories-item {
     align-items: center;
-    flex-basis: 24%;
+    flex-basis: 100%;
     border: var(--borderLight);
     border-radius: 10px;
     padding: 10px;
@@ -222,12 +231,12 @@ a.nav-link:hover {
     width: 100%;
 }
 
-.draw-title{
+.draw-title {
     margin-bottom: 30px;
     font-size: 30px;
 }
 
-.draw p{
+.draw p {
     margin-bottom: 20px;
 }
 
@@ -254,18 +263,20 @@ a.nav-link:hover {
     border: var(--borderBlue);
     background-color: var(--btnColorBlue);
     color: rgb(255, 255, 255);
+    transition: all .5s;
 }
 
-.btn-submit:hover{
+.btn-submit:hover {
     opacity: 0.75;
     cursor: pointer;
 }
+
 /* ---------------- FOOTER -----------------------------*/
-.footer{
+.footer {
     border-top: var(--borderLight);
 }
 
-.footer-container{
+.footer-container {
     height: 70px;
     display: flex;
     align-items: center;
@@ -275,5 +286,3 @@ a.nav-link:hover {
     margin: auto;
     overflow: hidden;
 }
-
-

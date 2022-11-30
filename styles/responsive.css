@@ -6,28 +6,23 @@
     .feature-plus-item {
         flex-basis: 45%;
     }
-    
-    .menu-navegation{
-        display: none;
-    }
-    
-    .accesories-item {
-        flex-basis: 100%;
-    }
 
     .field {
         width: 100%;
     }
 }
-/*------------------------------------------------------*/
 
-@media (min-width: 418px) and (max-width: 650px) {
-    .menu-navegation{
-        display: none;
-    }
+/*----------PANTALLAS ENTRE 418px Y 649px--------------------------------------------*/
+
+@media (min-width: 418px) and (max-width: 649px) {
 
     .product-details {
         column-gap: 20px
+    }
+
+    .accesories {
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .feature-plus {
@@ -38,24 +33,29 @@
         flex-basis: 48%;
     }
 }
-/*------------------------------------------------------*/
+
+/*----------VISUALICON DEL MENU A PARTIR DE 600px--------------------------------------------*/
 @media (min-width: 600px) {
-    .menu-navegation{
+    .menu-navegation {
         display: flex;
     }
 }
-/*------------------------------------------------------*/
 
+/*---------PANTALLAS ENTRE 650px Y 889px---------------------------------------------*/
 @media (min-width: 650px) and (max-width: 889px) {
     .product-details {
         display: flex;
-        column-gap: 20px
+        column-gap: 20px;
     }
 
     .feature-plus {
         gap: 10px;
     }
 
+    .accesories {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 
     .accesories-item {
         flex-basis: 32%;
@@ -74,16 +74,28 @@
         width: 40%;
     }
 }
-/*------------------------------------------------------*/
-@media (min-width: 889px) and (max-width: 999px) {
+
+/*-----------PANTALLAS ENTRE 890px Y 999px-------------------------------------------*/
+@media (min-width: 890px) and (max-width: 999px) {
     .product-details {
         flex-direction: row;
         column-gap: 20px
     }
 
+    .accesories {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .accesories-item {
+        flex-basis: 24%;
+    }
+
     .form {
         flex-direction: row;
+        flex-wrap: wrap;
     }
+
     .draw {
         width: 50%;
     }
@@ -92,15 +104,26 @@
         width: 40%;
     }
 }
-/*------------------------------------------------------*/
+
+/*----------PANTALLAS SUPERIORES A 1000px--------------------------------------------*/
 @media (min-width: 1000px) {
     .product-details {
         flex-direction: row;
         column-gap: 20px
     }
 
-    .form { 
+    .accesories {
         flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .accesories-item {
+        flex-basis: 24%;
+    }
+
+    .form {
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .draw {
