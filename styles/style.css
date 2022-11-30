@@ -20,7 +20,7 @@ body {
 .container {
     width: 85%;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 35px auto;
     overflow: hidden;
 }
 
@@ -183,7 +183,6 @@ a.nav-link:hover {
     justify-content: space-between;
     align-content: center;
     padding-top: 20px;
-    gap: 10px;
 }
 
 .accesories-item {
@@ -223,7 +222,7 @@ a.nav-link:hover {
     justify-content: space-evenly;
     align-items: flex-start;
     background-color: rgba(239, 246, 255);
-    padding: 20px;
+    padding: 30px;
     gap: 10px;
 }
 
