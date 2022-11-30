@@ -108,11 +108,6 @@ a.nav-link:hover {
     max-width: 100%;
 }
 
-.producto-description  {
-    flex-basis: 50%;
-    flex-grow: 1;  
-}
-
 .product-image span {
     position: absolute;
     top: 15px;
@@ -122,9 +117,9 @@ a.nav-link:hover {
     color: rgb(255, 255, 255);
 }
 
-.product-title,
-.description-text {
-    margin-bottom: 15px;
+.producto-description  {
+    flex-basis: 50%;
+    flex-grow: 1;  
 }
 
 .ofert {
@@ -132,6 +127,11 @@ a.nav-link:hover {
     font-weight: 600;
     margin-bottom: 15px;
     color: var(--btnColorRed);
+}
+
+.product-title,
+.description-text {
+    margin-bottom: 15px;
 }
 
 .buy {
@@ -168,7 +168,7 @@ a.nav-link:hover {
 
 
 /* ---------------- SECTIONS 2 -----------------------------*/
-.accesories-items {
+.accesories {
     display: flex;
     justify-content: space-between;
     align-content: center;
@@ -177,7 +177,7 @@ a.nav-link:hover {
     gap: 10px;
 }
 
-.article-item {
+.accesories-item {
     align-items: center;
     flex-basis: 24%;
     border: var(--borderLight);
@@ -185,27 +185,26 @@ a.nav-link:hover {
     padding: 10px;
 }
 
-.article-item img {
+.accesories-item img {
     width: 100%;
 }
 
-.article-item h3 {
+.accesories-item h3 {
     margin: 10px 0;
 }
 
-.item-btn-new {
+.accesories-item p {
+    margin: 20px 0 0 0;
+}
+
+.badge-new {
     background-color: var(--btnColorBlue);
     color: rgb(255, 255, 255);
 }
 
-
-.item-btn-ofert {
+.badge-ofert {
     background-color: var(--btnColorRed);
     color: rgb(255, 255, 255);
-}
-
-.article-item p {
-    margin: 20px 0 0 0;
 }
 
 /* ---------------- SECTIONS 3 -------------------------*/
@@ -219,24 +218,24 @@ a.nav-link:hover {
     gap: 10px;
 }
 
-.infomation {
+.draw {
     width: 100%;
 }
 
-.sorteo{
+.draw-title{
     margin-bottom: 30px;
     font-size: 30px;
 }
 
-.infomation p{
+.draw p{
     margin-bottom: 20px;
 }
 
-.form-person {
+.formulary {
     width: 100%;
 }
 
-.form-person label {
+.formulary label {
     display: block;
     margin-bottom: 5px;
 }
@@ -276,4 +275,5 @@ a.nav-link:hover {
     margin: auto;
     overflow: hidden;
 }
+
 
