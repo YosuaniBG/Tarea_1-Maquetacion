@@ -16,21 +16,12 @@
     }
 }
 
-/*----------PANTALLAS ENTRE 418px Y 649px--------------------------------------------*/
+/*----------PANTALLA SUPERIORES A 418px --------------------------------------------*/
 
-@media (min-width: 418px) and (max-width: 650px) {
-
-    .product-details {
-        column-gap: 20px
-    }
-
+@media (min-width: 418px)  {    
     .accesories {
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .feature-plus {
         gap: 10px;
     }
 
@@ -42,24 +33,13 @@
 /*----------VISUALICON DEL MENU A PARTIR DE 600px--------------------------------------------*/
 @media (min-width: 600px) {
     .menu-navegation {
-        display: flex;
+        display: inline;
     }
 }
 
-/*---------PANTALLAS ENTRE 650px Y 889px---------------------------------------------*/
-@media (min-width: 650px) and (max-width: 890px) {
-    .product-details {
-        display: flex;
-        column-gap: 20px;
-    }
-
-    .feature-plus {
-        gap: 10px;
-    }
-
+/*---------PANTALLA SUPERIORES A  650px ---------------------------------------------*/
+@media (min-width: 650px)  {
     .accesories {
-        flex-direction: row;
-        flex-wrap: wrap;
         gap: 5px;
     }
 
@@ -79,61 +59,21 @@
     .formulary {
         width: 40%;
     }
+
+    .field {
+        width: 100%;
+    }
 }
 
-/*-----------PANTALLAS ENTRE 890px Y 999px-------------------------------------------*/
-@media (min-width: 890px) and (max-width: 999px) {
+/*-----------PANTALLA SUPERIORES A 890px -------------------------------------------*/
+@media (min-width: 890px)  {
     .product-details {
         flex-direction: row;
-        column-gap: 20px
-    }
-
-    .accesories {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .accesories-item {
-        flex-basis: 24%;
-    }
-
-    .form {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .draw {
-        width: 50%;
-    }
-
-    .formulary {
-        width: 40%;
     }
 }
 
 /*----------PANTALLAS SUPERIORES A 1000px--------------------------------------------*/
 @media (min-width: 1000px) {
-    .product-details {
-        flex-direction: row;
-        column-gap: 20px
-    }
-
-    .accesories {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .accesories-item {
-        flex-basis: 24%;
-    }
-
-    .form {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
     .draw {
         width: 60%;
     }
