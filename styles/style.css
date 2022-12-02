@@ -189,7 +189,7 @@ a.nav-link:hover {
     align-items: center;
     flex-basis: 100%;
     border: var(--borderLight);
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
 }
 
