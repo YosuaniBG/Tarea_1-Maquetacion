@@ -10,7 +10,7 @@
       src="https://kit.fontawesome.com/d0d4dc015a.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="shortcut icon" href="images/tienda2.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/icono2.png" type="image/x-icon" />
     <title>Tarea_1: Maquetación Web</title>
   </head>
   <body>
@@ -18,7 +18,7 @@
     <header class="header">
       <div class="nav-container">
         <div class="logotipo">
-          <a class="logo" href="#">agoodshop</a>
+          <img src="images/Agoodshop.png" alt="" class="logo" />
         </div>
         <nav class="menu-navegation">
           <ul class="navbar">
@@ -34,20 +34,136 @@
             <li class="nav-item">
               <a class="nav-item-btn big-btn" href="#">Contactar</a>
             </li>
+            <li class="nav-item cart">
+              <img src="images/cart.png" alt="" class="cart-img" />
+              <span class="full">1</span>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
+    <!--Offcanvas seccion de pago-->
+    <div class="cart-container">
+      <div class="margin-top">
+        <div class="table-products-container">
+          <table class="table-products">
+            <thead>
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Unidad</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr>
+                <td>
+                  <h4 class="table-product-name">Producto 1</h4>
+                  <p class="table-product-ref">Ref:000000000</p>
+                </td>
+                <td>
+                  <span class="inc-dec">-</span
+                  ><input class="count" type="text" value="0" /><span
+                    class="inc-dec"
+                    >+</span
+                  >
+                </td>
+                <td>$ 00.00</td>
+                <td>$ 00.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <h4 class="table-product-name">Producto 2</h4>
+                  <p class="table-product-ref">Ref:000000000</p>
+                </td>
+                <td>
+                  <span class="inc-dec">-</span
+                  ><input class="count" type="text" value="0" /><span
+                    class="inc-dec"
+                    >+</span
+                  >
+                </td>
+                <td>$ 00.00</td>
+                <td>$ 00.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <h4 class="table-product-name">Producto 3</h4>
+                  <p class="table-product-ref">Ref:000000000</p>
+                </td>
+                <td>
+                  <span class="inc-dec">-</span
+                  ><input class="count" type="text" value="0" /><span
+                    class="inc-dec"
+                    >+</span
+                  >
+                </td>
+                <td>$ 00.00</td>
+                <td>$ 00.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <h4 class="table-product-name">Producto 4</h4>
+                  <p class="table-product-ref">Ref:000000000</p>
+                </td>
+                <td>
+                  <span class="inc-dec">-</span
+                  ><input class="count" type="text" value="0" /><span
+                    class="inc-dec"
+                    >+</span
+                  >
+                </td>
+                <td>$ 00.00</td>
+                <td>$ 00.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-total-container">
+          <table class="table-total">
+            <thead>
+              <th colspan="2">Total</th>
+            </thead>
+            <tbody>
+              <!--<tr>
+                <td>producto 1</td>
+                <td>$ 00.00</td>
+              </tr>
+              <tr>
+                <td>producto 2</td>
+                <td>$ 00.00</td>
+              </tr>
+              <tr>
+                <td>producto 3</td>
+                <td>$ 00.00</td>
+              </tr>
+              <tr>
+                <td>producto 4</td>
+                <td>$ 00.00</td>
+              </tr> -->
+            </tbody>
+            <tfoot>
+              <tr class="table-foot">
+                <td>TOTAL</td>
+                <td>$ 00.00</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--fin seccion de pago-->
     <!--                       Main - Secciones de la página                     -->
     <main>
       <!--                       Sección 1 - Producto                     -->
       <section class="container">
         <div class="product-details">
           <div class="product-image">
-            <img
+            <!--<img
               src="https://via.placeholder.com/950x900/f4f4f5/cecece?text=Product"
               alt="Producto_en_venta"
-            />
+            />-->
+            <img src="images/iPhone13Pro.jpg" alt="Producto_en_venta" />
             <span>128gb</span>
           </div>
           <div class="producto-description">
@@ -91,56 +207,61 @@
         <h2>Accesorios recomendados</h2>
         <div class="accesories">
           <article class="accesories-item">
-            <img
-              src="https://via.placeholder.com/150x100/f4f4f5/cecece?text=Accessory"
-              alt="Accesorio_1"
-            />
-            <h3>Cargador</h3>
-            <span class="small-btn" hidden>Boton</span>
-            <p>
-              El adaptador de corriente USB-C de 20 W es muy rápido y eficiente,
-              así que va de perlas para cargar tus dispositivos en cualquier
-              lugar.
-            </p>
+            <div class="top-card">
+              <img src="images/cargador1.jpg" alt="Accesorio_1" />
+
+              <span class="small-btn" hidden>Boton</span>
+              <h3>Cargador</h3>
+              <p>
+                El adaptador de corriente USB-C de 20 W es muy rápido y
+                eficiente, así que va de perlas para cargar tus dispositivos en
+                cualquier lugar.
+              </p>
+            </div>
+            <button class="btn-add-cart">Añadir al carrito</button>
           </article>
           <article class="accesories-item">
-            <img
-              src="https://via.placeholder.com/150x100/f4f4f5/cecece?text=Accessory"
-              alt="Accesorio_2"
-            />
-            <h3>Base de carga inalámbrica</h3>
-            <span class="badge-ofert small-btn">Oferta</span>
-            <p>
-              Sistema de soporte para que sigas usando tu smartphone cómodamente
-              mientras lo cargas. Compatible con carga rápida de 20 W
-            </p>
+            <div class="top-card">
+              <img src="images/base_inalambrica2.jpg" alt="Accesorio_2" />
+
+              <span class="badge-ofert small-btn">Oferta</span>
+              <h3>Base de carga inalámbrica</h3>
+              <p>
+                Sistema de soporte para que sigas usando tu smartphone
+                cómodamente mientras lo cargas. Compatible con carga rápida de
+                20 W
+              </p>
+            </div>
+            <button class="btn-add-cart">Añadir al carrito</button>
           </article>
           <article class="accesories-item">
-            <img
-              src="https://via.placeholder.com/150x100/f4f4f5/cecece?text=Accessory"
-              alt="Accesorio_3"
-            />
-            <h3>Funda piel</h3>
-            <span class="small-btn" hidden>Boton</span>
-            <p>
-              Fabricadas en piel europea curtida y teñida con un proceso
-              especial, son suaves al tacto y adquieren un tono natural con el
-              tiempo. Los botones de aluminio combinan a la perfección con el
-              acabado de la piel.
-            </p>
+            <div class="top-card">
+              <img src="images/funda2.webp" alt="Accesorio_3" />
+
+              <span class="small-btn" hidden>Boton</span>
+              <h3>Funda piel</h3>
+              <p>
+                Fabricadas en piel europea curtida y teñida con un proceso
+                especial, son suaves al tacto y adquieren un tono natural con el
+                tiempo. Los botones de aluminio combinan a la perfección con el
+                acabado de la piel.
+              </p>
+            </div>
+            <button class="btn-add-cart">Añadir al carrito</button>
           </article>
           <article class="accesories-item">
-            <img
-              src="https://via.placeholder.com/150x100/f4f4f5/cecece?text=Accessory"
-              alt="Accesorio_4"
-            />
-            <h3>Cargador</h3>
-            <span class="badge-new small-btn">Nuevo</span>
-            <p>
-              El adaptador de corriente USB-C de 20 W es muy rápido y eficiente,
-              así que va de perlas para cargar tus dispositivos en cualquier
-              lugar.
-            </p>
+            <div class="top-card">
+              <img src="images/cargador2.jpg" alt="Accesorio_4" />
+
+              <span class="badge-new small-btn">Nuevo</span>
+              <h3>Cargador</h3>
+              <p>
+                El adaptador de corriente USB-C de 20 W es muy rápido y
+                eficiente, así que va de perlas para cargar tus dispositivos en
+                cualquier lugar.
+              </p>
+            </div>
+            <button class="btn-add-cart">Añadir al carrito</button>
           </article>
         </div>
       </section>
@@ -187,8 +308,9 @@
     <!--                       Footer                          -->
     <footer class="footer">
       <nav class="footer-container">
-        <span class="logo">© agoodshop</span>
+        <img src="images/Agoodshop.png" alt="" class="logo-footer" />
       </nav>
     </footer>
+    <script src="scripts/script.js"></script>
   </body>
 </html>

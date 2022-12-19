@@ -31,7 +31,7 @@
 }
 
 /*----------VISUALICON DEL MENU A PARTIR DE 600px--------------------------------------------*/
-@media (min-width: 600px) {
+@media (min-width: 690px) {
     .menu-navegation {
         display: inline;
     }
@@ -79,6 +79,6 @@
     }
 
     .formulary {
-        width: 35%;
+        width: 30%;
     }
 }

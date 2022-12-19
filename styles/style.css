@@ -8,8 +8,11 @@
 :root {
     --btnColorBlue: rgb(59, 130, 246);
     --btnColorRed: rgb(232, 12, 12);
+    --btnColorYellow: rgb(237, 219, 19);
     --borderBlue: rgb(30, 64, 175) 1.5px solid;
     --borderLight: rgb(203, 203, 203) solid 1.5px;
+    --borderYellow:  1.5px solid rgb(169, 148, 9);
+    
 }
 
 body {
@@ -20,13 +23,12 @@ body {
 .container {
     width: 85%;
     max-width: 1200px;
-    margin: 35px auto;
-    overflow: hidden;
+    margin: 30px auto;
 }
 
 .small-btn {
-    font-size: 12px;
-    padding: 7px 10px;
+    font-size: 0.6rem;
+    padding: 5px 10px;
     border-radius: 5px;
 }
 
@@ -43,7 +45,13 @@ p {
 /* ---------------- HEADER - NAVEGACIÓN -------------------------*/
 
 .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     border-bottom: var(--borderLight);
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 3px 0 5px 2px rgba(127, 126, 126, 0.5);
 }
 
 .nav-container {
@@ -54,13 +62,18 @@ p {
     width: 85%;
     max-width: 1200px;
     margin: auto;
-    overflow: hidden;
+
+}
+
+.logotipo {
+
+    width: 120px;
+    height: 60px;
 }
 
 .logo {
-    font-weight: 900;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
+    width: 100%;
+    height: 100%;
 }
 
 .menu-navegation {
@@ -93,8 +106,159 @@ a.nav-link:hover {
     background-color: rgb(239, 236, 236);
 }
 
-/* ---------------- MAIN - SECTIONS -----------------------------*/
+.cart {
+    position: relative;
+}
+
+.cart-img {
+    width: 35px;
+}
+
+.cart-img:hover {
+    cursor: pointer;
+}
+
+.full {
+    position: absolute;
+    top: -9px;
+    left: 25px;
+    padding: 2px 3px;
+    background-color: red;
+    color: white;
+    font-size: 0.5rem;
+    border-radius: 50%;
+}
+/*-----------------PAY SECTION------------------------------*/
+.cart-container{
+    position: fixed;
+    top: -100vh;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;    
+    transition: top .5s ease;
+    /*background-color: rgba(48, 48, 48, 0.302);*/
+}
+
+.hidden-cart-container{
+    top: 0;
+}
+
+.margin-top{
+    max-width: 1400px;
+    width: 90%;
+    margin: auto;
+    margin-top: 70px;
+    border: var(--borderLight);
+    height: 700px;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.table-products-container{
+    width: 70%;
+}
+
+.table-products{
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.table-products thead{
+    border-bottom: rgb(203, 203, 203) solid 2px;
+}
+
+.table-products th, .table-products td {
+    width: 200px;
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+   
+}
+
+th:first-child, td:first-child{
+    width: 230px;
+    text-align: left;
+    padding-left: 0;
+}
+
+.table-products tr:nth-child(even){
+    background-color: #f9f9f9;
+    border-top: rgb(233, 233, 233) solid 1px  ;
+    border-bottom: rgb(233, 233, 233) solid 1px ;
+}
+
+.table-product-ref{
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.count{
+    padding: 15px;
+    margin: 0 15px;
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+    border: var(--borderLight);
+}
+
+.inc-dec{
+    font-size: 20px;
+}
+
+.inc-dec:hover{
+    cursor: pointer;
+}
+
+.table-total-container{
+    background-color: #f9f9f9;
+    padding: 0 20px;
+    width: 25%;
+}
+
+.table-total{
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.table-total th{
+    text-align: left;
+    padding: 30px 0;
+    font-size: 14px;
+}
+
+.table-total td:first-child{
+    width: 75%;
+}
+
+.table-total td{
+    padding: 10px 0;
+}
+
+tfoot{
+    border-top: rgb(203, 203, 203) solid 2px;
+    font-size: 14px;
+}
+
+.table-foot td{
+    padding: 20px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+}
+
+/* ---------------- MAIN - SECTIONS ------------------------*/
 /* ---------------- SECTIONS 1 -----------------------------*/
+main{
+    margin-top: 100px;
+    background-color: white;
+}
+
 .product-details {
     display: flex;
     flex-direction: column;
@@ -109,10 +273,14 @@ a.nav-link:hover {
     display: inline-block;
     flex-basis: 40%;
     flex-grow: 1;
+    box-shadow: 0px 3px 5px 1px rgb(82, 82, 82, 0.5);
+    border-radius: 5px;
 }
 
 .product-image img {
+    width: 100%;
     max-width: 100%;
+    border-radius: 5px;
 }
 
 .product-image span {
@@ -187,11 +355,20 @@ a.nav-link:hover {
 }
 
 .accesories-item {
-    align-items: center;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
     flex-basis: 100%;
     border: var(--borderLight);
     border-radius: 5px;
     padding: 10px;
+    display: flex;
+    
+}
+
+.accesories-item:hover {
+    box-shadow: 3px 3px 5px 1px rgb(82, 82, 82, 0.5);
 }
 
 .accesories-item img {
@@ -207,13 +384,29 @@ a.nav-link:hover {
 }
 
 .badge-new {
+    position: absolute;
+    top: 5px;
+    left: 5px;
     background-color: var(--btnColorBlue);
     color: rgb(255, 255, 255);
 }
 
 .badge-ofert {
+    position: absolute;
+    top: 5px;
+    left: 5px;
     background-color: var(--btnColorRed);
     color: rgb(255, 255, 255);
+}
+
+.btn-add-cart {
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 600;
+    padding: 10px;
+    border: var(--borderYellow);
+    border-radius: 5px;
+    background-color: var(--btnColorYellow);
 }
 
 /* ---------------- SECTIONS 3 -------------------------*/
@@ -274,6 +467,7 @@ a.nav-link:hover {
 /* ---------------- FOOTER -----------------------------*/
 .footer {
     border-top: var(--borderLight);
+    background-color: white;
 }
 
 .footer-container {
@@ -285,4 +479,9 @@ a.nav-link:hover {
     max-width: 1200px;
     margin: auto;
     overflow: hidden;
+}
+
+.logo-footer {
+    height: 30px;
+    width: 80px;
 }
