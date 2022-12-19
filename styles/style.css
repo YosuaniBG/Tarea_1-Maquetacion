@@ -157,6 +157,7 @@ a.nav-link:hover {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    
 }
 
 .table-products-container{
