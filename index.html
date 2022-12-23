@@ -43,113 +43,95 @@
       </div>
     </header>
     <!--Offcanvas seccion de pago-->
-    <div class="cart-container">
-      <div class="margin-top">
+    <div class="offcanvas-container">
+      <div class="offcanvas-backdrop"></div>
+      <div class="cart-container">
+        <span class="close">X</span>
         <div class="tables-section">
           <div class="table-products-container">
-            <table class="table-products">
-              <thead>
-                <tr>
-                  <th scope="col">Producto</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Unidad</th>
-                  <th scope="col">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <h4 class="table-product-name">Producto 1</h4>
-                    <p class="table-product-ref">Ref:000000000</p>
-                  </td>
-                  <td>
-                    <span class="inc-dec">-</span
-                    ><input class="count" type="text" value="0" /><span
-                      class="inc-dec"
-                      >+</span
-                    >
-                  </td>
-                  <td>$ 00.00</td>
-                  <td>$ 00.00</td>
-                </tr>
-                <tr>
-                  <td>
-                    <h4 class="table-product-name">Producto 2</h4>
-                    <p class="table-product-ref">Ref:000000000</p>
-                  </td>
-                  <td>
-                    <span class="inc-dec">-</span
-                    ><input class="count" type="text" value="0" /><span
-                      class="inc-dec"
-                      >+</span
-                    >
-                  </td>
-                  <td>$ 00.00</td>
-                  <td>$ 00.00</td>
-                </tr>
-                <tr>
-                  <td>
-                    <h4 class="table-product-name">Producto 3</h4>
-                    <p class="table-product-ref">Ref:000000000</p>
-                  </td>
-                  <td>
-                    <span class="inc-dec">-</span
-                    ><input class="count" type="text" value="0" /><span
-                      class="inc-dec"
-                      >+</span
-                    >
-                  </td>
-                  <td>$ 00.00</td>
-                  <td>$ 00.00</td>
-                </tr>
-                <tr>
-                  <td>
-                    <h4 class="table-product-name">Producto 4</h4>
-                    <p class="table-product-ref">Ref:000000000</p>
-                  </td>
-                  <td>
-                    <span class="inc-dec">-</span
-                    ><input class="count" type="text" value="0" /><span
-                      class="inc-dec"
-                      >+</span
-                    >
-                  </td>
-                  <td>$ 00.00</td>
-                  <td>$ 00.00</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="header-row">
+              <ul>
+                <li>Producto</li>
+                <li>Cantidad</li>
+                <li>Unidad</li>
+                <li>Total</li>
+              </ul>
+            </div>
+            <div class="product-row">
+              <ul>
+                <li>
+                  <h2 class="table-product-name">Producto 1</h2>
+                  <p class="table-product-ref">Ref:000000000</p>
+                </li>
+                <li>
+                  <span class="inc-dec">-</span
+                  ><input class="count" type="text" value="0" /><span
+                    class="inc-dec"
+                    >+</span
+                  >
+                </li>
+                <li><span>$ 00.00</span></li>
+                <li><span>$ 00.00</span></li>
+              </ul>
+              <ul>
+                <li>
+                  <h2 class="table-product-name">Producto 1</h2>
+                  <p class="table-product-ref">Ref:000000000</p>
+                </li>
+                <li>
+                  <span class="inc-dec">-</span
+                  ><input class="count" type="text" value="0" /><span
+                    class="inc-dec"
+                    >+</span
+                  >
+                </li>
+                <li><span>$ 00.00</span></li>
+                <li><span>$ 00.00</span></li>
+              </ul>
+              <ul>
+                <li>
+                  <h2 class="table-product-name">Producto 1</h2>
+                  <p class="table-product-ref">Ref:000000000</p>
+                </li>
+                <li>
+                  <span class="inc-dec">-</span
+                  ><input class="count" type="text" value="0" /><span
+                    class="inc-dec"
+                    >+</span
+                  >
+                </li>
+                <li><span>$ 00.00</span></li>
+                <li><span>$ 00.00</span></li>
+              </ul>
+              <ul>
+                <li>
+                  <h2 class="table-product-name">Producto 1</h2>
+                  <p class="table-product-ref">Ref:000000000</p>
+                </li>
+                <li>
+                  <span class="inc-dec">-</span
+                  ><input class="count" type="text" value="0" /><span
+                    class="inc-dec"
+                    >+</span
+                  >
+                </li>
+                <li><span>$ 00.00</span></li>
+                <li><span>$ 00.00</span></li>
+              </ul>
+            </div>
           </div>
           <div class="table-total-container">
-            <table class="table-total">
-              <thead>
-                <th colspan="2">Total</th>
-              </thead>
-              <tbody>
-                <!--<tr>
-                <td>producto 1</td>
-                <td>$ 00.00</td>
-              </tr>
-              <tr>
-                <td>producto 2</td>
-                <td>$ 00.00</td>
-              </tr>
-              <tr>
-                <td>producto 3</td>
-                <td>$ 00.00</td>
-              </tr>
-              <tr>
-                <td>producto 4</td>
-                <td>$ 00.00</td>
-              </tr> -->
-              </tbody>
-              <tfoot>
-                <tr class="table-foot">
-                  <td>TOTAL</td>
-                  <td>$ 00.00</td>
-                </tr>
-              </tfoot>
-            </table>
+            <ul>
+              <li>Total</li>
+            </ul>
+            <ul class="product-row-total-table">
+              <li>Producto 1</li>
+              <li><span>$ 00.00</span></li>
+            </ul>
+            <ul class="product-row-total-table">
+              <li>TOTAL</li>
+              <li><span>$ 00.00</span></li>
+            </ul>
           </div>
         </div>
         <div class="cart-buttons">
@@ -243,7 +225,7 @@
                 cualquier lugar.
               </p>
             </div>
-            <button class="add-cart-btn">Añadir al carrito</button>
+            <button class="add-cart-btn big-btn">Añadir al carrito</button>
           </article>
           <article class="accesories-item">
             <div class="top-card">
@@ -258,7 +240,7 @@
                 20 W
               </p>
             </div>
-            <button class="add-cart-btn">Añadir al carrito</button>
+            <button class="add-cart-btn big-btn">Añadir al carrito</button>
           </article>
           <article class="accesories-item">
             <div class="top-card">
@@ -274,7 +256,7 @@
                 acabado de la piel.
               </p>
             </div>
-            <button class="add-cart-btn">Añadir al carrito</button>
+            <button class="add-cart-btn big-btn">Añadir al carrito</button>
           </article>
           <article class="accesories-item">
             <div class="top-card">
@@ -289,7 +271,7 @@
                 cualquier lugar.
               </p>
             </div>
-            <button class="add-cart-btn">Añadir al carrito</button>
+            <button class="add-cart-btn big-btn">Añadir al carrito</button>
           </article>
         </div>
       </section>
