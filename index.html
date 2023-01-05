@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/responsive.css" />
-    <script
-      src="https://kit.fontawesome.com/d0d4dc015a.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="shortcut icon" href="images/icono2.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>Tarea_1: Maquetación Web</title>
   </head>
   <body>
@@ -20,26 +16,31 @@
         <div class="logotipo">
           <img src="images/Agoodshop.png" alt="" class="logo" />
         </div>
-        <nav class="menu-navegation">
-          <ul class="navbar">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Tienda</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Accesorios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Soporte</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item-btn big-btn" href="#">Contactar</a>
-            </li>
-            <li class="nav-item cart">
-              <img src="images/cart.png" alt="" class="cart-img" />
-              <span class="full">1</span>
-            </li>
-          </ul>
-        </nav>
+        <div class="menu-navegation">
+          <nav class="menu-full">
+            <ul class="navbar">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Tienda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Accesorios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Soporte</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-item-btn big-btn" href="#">Contactar</a>
+              </li>
+              <li class="nav-item cart">
+                <i class="cart-img fa-solid fa-car"></i>
+                <span class="full">1</span>
+              </li>
+            </ul>
+          </nav>
+          <div class="menu-hidden">
+            <i class="fa-solid fa-bars"></i>
+          </div>  
+        </div>
       </div>
     </header>
     <!--Offcanvas seccion de pago-->

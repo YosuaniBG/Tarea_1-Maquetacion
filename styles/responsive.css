@@ -32,8 +32,45 @@
 
 /*----------VISUALICON DEL MENU A PARTIR DE 600px--------------------------------------------*/
 @media (min-width: 690px) {
-    .menu-navegation {
+    .menu-full {
         display: inline;
+    }
+
+    .menu-hidden{
+        display: none;
+    }
+
+    .navbar {
+        position: static;
+        height: 70px;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        list-style: none;
+        box-shadow: none;
+        background-color: white;
+        transform: none;
+    }
+
+    .nav-item a {
+        text-decoration: none;
+        color: rgb(114, 114, 114);
+    }
+    
+    a.nav-link:hover {
+        color: rgb(52, 51, 51);
+    }
+    
+    .nav-item-btn {
+        border: var(--borderLight);
+        transition: all .5s;
+    }
+    
+    .nav-item-btn:hover {
+        background-color: rgb(239, 236, 236);
     }
 }
 

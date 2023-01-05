@@ -5,4 +5,11 @@ window.onload = function(){
         document.querySelector('.offcanvas-backdrop').classList.toggle('show-offcanvas-backdrop');
     });
 
+    document.querySelector('.fa-bars').addEventListener('click', () => {
+        document.querySelector('.navbar').classList.toggle('navbar-show');
+    });
+
 }
+
+
+
