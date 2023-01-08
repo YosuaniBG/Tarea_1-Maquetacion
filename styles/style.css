@@ -94,7 +94,6 @@ p {
     flex-direction: column;
     position: fixed;
     top: 71px;
-    bottom: 70px;
     left: -200px;
     gap: 40px;
     background-color: rgba(50, 49, 49, 0.5);
