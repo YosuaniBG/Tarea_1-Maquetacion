@@ -85,15 +85,19 @@
             </div>
           </div>
           <div class="table-total-container">
-            <ul>
+            <ul class="first-ul">
               <li>Total</li>
             </ul>
-            <ul class="product-row-total-table">
-              <li>Producto 1</li>
-              <li><span>$ 00.00</span></li>
-            </ul>
-            <ul class="product-row-total-table">
-              <li>TOTAL</li>
+            <div class="product-row-total-table">
+              <template id="template-total-table">
+                <ul class="">
+                  <li>Producto 1</li>
+                  <li><span>$ 00.00</span></li>
+                </ul>
+              </template>
+            </div>
+            <ul class="last-ul">
+              <li class="li-total">TOTAL</li>
               <li><span>$ 00.00</span></li>
             </ul>
           </div>

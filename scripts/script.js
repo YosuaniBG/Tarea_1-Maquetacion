@@ -1,8 +1,13 @@
 import { Carrito } from "./cart.js";
 const productRow = document.querySelector('.product-row')
 const templateProductRow = document.getElementById('template-product-row').content
+
+const productRowTotalTable = document.querySelector(".product-row-total-table");
+const templateTotalTable = document.getElementById("template-total-table").content;
+
 const fragment = document.createDocumentFragment()
-let carrito = {}
+const fragment2 = document.createDocumentFragment()
+
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".cart-img").addEventListener("click", () => {
@@ -31,26 +36,25 @@ const getProductAPI = async () => {
       (result) => {
         result.json().then((datos) => {
           const cart = new Carrito(datos);
-          carrito = cart;
-          inicializarCarrito(carrito);
 
+          initializeCart(cart);
+
+          //Acciones de los botones Incremento y Decremento
           productRow.addEventListener('click', e =>{
             if(e.target.classList.contains('inc')){
               cart.api.products.find((elem) => {
                 return elem.SKU === e.target.dataset.id;
               }).quantity++;
-              Actualizar(cart);
+              update(cart);
             }
             if(e.target.classList.contains('dec')){
               if(cart.api.products.find((elem) => { return elem.SKU === e.target.dataset.id}).quantity > 0){
                 cart.api.products.find((elem) => {
                   return elem.SKU === e.target.dataset.id;
                 }).quantity--;
-                Actualizar(cart);
+                update(cart);
               }
-              
             }
-
           })
         });
       }
@@ -60,40 +64,61 @@ const getProductAPI = async () => {
   }
 };
 
-const inicializarCarrito = (carrito) =>{
-  const productList = carrito.obtenerCarrito().products;
+//------------------------------------------------------------------------- Método para Inicializar el Carrito ----------
+const initializeCart = (cart) =>{
+  const productList = cart.obtenerCarrito().products;
 
   //Indicar la cantidad de productos existentes en el carrito
   document.querySelector(".full").textContent = productList.length;
 
-  // Optimizar este codigo
   productList.forEach((elem) => {
-    carrito.actualizarUnidades(elem.SKU, 0);
+    cart.actualizarUnidades(elem.SKU, 0);
   });
 
-  //Pintar los productos
-  printCart(productList);
+  printCart(cart.obtenerCarrito());
 }
 
-function Actualizar(carrito){
-  printCart(carrito.obtenerCarrito().products)
+//-------------------------------------------------------------------------- Método para Actualizar ---------
+const update = (cart) => {
+  printCart(cart.obtenerCarrito())
 }
 
-const printCart = (products) => {
+//--------------------------------------------------------------------------- Método para Imprimir el carrito --------
+const printCart = (cart) => {
   productRow.innerHTML = '';
-  products.forEach((elem)=>{
+  const productList = cart.products;
+  //console.log(cart.total)
+  productList.forEach((elem)=>{
     templateProductRow.querySelector('.table-product-name').textContent = elem.title
     templateProductRow.querySelector('.table-product-ref').textContent = 'Ref: ' + elem.SKU
-    templateProductRow.querySelector('#product-price').textContent = elem.price + '€'
-    templateProductRow.querySelector('#product-cost').textContent =  elem.price * elem.quantity + '€'
+    templateProductRow.querySelector('#product-price').textContent = elem.price + cart.currency
+    templateProductRow.querySelector('#product-cost').textContent =  Math.round((elem.price * elem.quantity * 100))/ 100 + cart.currency
     templateProductRow.querySelector('#amount').value = elem.quantity
     templateProductRow.querySelector('.dec').dataset.id = elem.SKU
     templateProductRow.querySelector('.inc').dataset.id = elem.SKU
-     
+    
     const clone = templateProductRow.cloneNode(true)
     fragment.appendChild(clone)
-    
   });
+
+  document.querySelector('.last-ul span').textContent = Math.round((cart.total * 100))/ 100 + cart.currency;
+  updateTotalTable(cart)
+
   productRow.appendChild(fragment);
 }
- 
+
+const updateTotalTable = (cart) =>{
+  productRowTotalTable.innerHTML = '';
+  const productList = cart.products;
+  productList.forEach((elem)=>{
+    if(elem.quantity !== 0){
+      templateTotalTable.querySelectorAll('li')[0].textContent = elem.title
+      templateTotalTable.querySelector('span').textContent = Math.round((elem.price * elem.quantity * 100))/ 100 + cart.currency
+   
+      const clone2 = templateTotalTable.cloneNode(true)
+      fragment2.appendChild(clone2)
+    }
+  });
+  productRowTotalTable.appendChild(fragment2);
+
+}
