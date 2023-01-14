@@ -1,34 +1,40 @@
 export class Carrito {
-    //El carrito se construye a partir de un objeto derivado de un JSON
-    constructor(productos) {
-      this.productos = productos;
-    }
-  
-    //Actualiza el valor quantity del objeto, si este no existe lo crea y le asigna el valor (units)
-    actualizarUnidades(sku, units) {
-      this.productos.products.find((elem) => {
-        return elem.SKU === sku;
-      }).quantity = units;
-    }
-  
-    //Muestra la informacion de un producto determinado como un objeto
-    obtenerInformacionProducto(sku) {
-      return this.productos.products.find((elem) => {
-        return elem.SKU === sku;
-      });
-    }
-  
-    obtenerCarrito() {
-      this.productos.total = this.obtenerTotal();
-      return this.productos;
-    }
-  
-    //Ajustar bien para en el caso de que aun no tenga la propiedad quantity
-    obtenerTotal() {
-      let total = 0;
-      this.productos.products.forEach((elem) => {
-        total += elem.quantity * elem.price;
-      });
-      return total;
-    }
+  //El carrito se construye a partir de un objeto derivado de un JSON
+  constructor(api) {
+    this.api = api;
   }
+
+  //Actualiza el valor quantity del objeto, si este no existe lo crea y le asigna el valor (units)
+  actualizarUnidades(sku, units) {
+    this.api.products.find((elem) => {
+      return elem.SKU === sku;
+    }).quantity = units;
+  }
+
+  //Muestra la informacion de un producto determinado como un objeto
+  obtenerInformacionProducto(sku) {
+    return this.api.products.find((elem) => {
+      return elem.SKU === sku;
+    });
+  }
+
+  obtenerCarrito() {
+    if(isNaN(this.obtenerTotal()))
+      this.api.total = 0
+    else
+      this.api.total = this.obtenerTotal()
+    return this.api; 
+  }
+
+  // Permite obtener el total a pagar en el carrito, si no se actualizan
+  // las unidades antes, el método lanza un valo NaN que luego se tomará
+  // como 0 en el método obtenerCarrito().
+    obtenerTotal() {
+    const productList = this.api.products;
+    const suma = productList.reduce((acc, elem) => {
+      return acc + elem.quantity * elem.price;
+    }, 0);
+    
+    return suma;
+  }
+}

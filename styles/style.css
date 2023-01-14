@@ -264,11 +264,11 @@ a.nav-link:hover {
     border: var(--borderLight);
 }
 
-.inc-dec {
+.inc, .dec {
     font-size: 20px;
 }
 
-.inc-dec:hover {
+.inc:hover, .dec:hover {
     cursor: pointer;
 }
 
