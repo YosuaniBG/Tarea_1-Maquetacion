@@ -90,6 +90,7 @@ p {
 }
 
 .navbar {
+    /*
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -101,11 +102,24 @@ p {
     height: 100%;
     list-style: none;
     transition: left 0.5s ease;
+    */
+    display: flex;
+    z-index: 999;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    top: -500px;
+    left: 0;
+    gap: 40px;
+    background-color: rgba(50, 49, 49, 0.5);
+    padding: 30px 30px 30px 30px;
+    list-style: none;
+    transition: top 0.5s ease;
     
 }
 
 .navbar-show{
-    left: 0;
+    top: 71px;
 }
 
 .nav-item a {
@@ -132,7 +146,8 @@ a.nav-link:hover {
 }
 
 .cart-img {
-    font-size: 25px;
+    /*font-size: 25px;*/
+    width: 35px;
 }
 
 .cart-img:hover {
@@ -141,12 +156,13 @@ a.nav-link:hover {
 
 .full {
     position: absolute;
-    top: -9px;
-    left: 25px;
+    z-index: 1001;
+    top: -2px;
+    left: 12px;
     padding: 2px 3px;
-    background-color: red;
+    font-weight: 600;
     color: white;
-    font-size: 0.5rem;
+    font-size: 1rem;
     border-radius: 50%;
 }
 
@@ -185,6 +201,9 @@ a.nav-link:hover {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .show-cart-container {
@@ -229,7 +248,7 @@ a.nav-link:hover {
 
 .header-row ul, .product-row ul{
     padding: 30px 10px;
-    font-size: 14px;
+  1000  font-size: 14px;
     font-weight: 600;
 }
 
@@ -346,7 +365,7 @@ main {
 }
 
 .main-translate{
-    transform: translateX(150px);
+    transform: translateY(315px);
 }
 
 .product-details {

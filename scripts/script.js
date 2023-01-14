@@ -60,12 +60,12 @@ const getProductAPI = async () => {
       }
     );
   } catch (error) {
-    console.log("Esto lanzó el siguiente error:" + error);
+    alert("El sitio lanzó el siguiente error: " + error + ", al parecer hubo algún problema a la hora de cargar la API");
   }
 };
 
 //------------------------------------------------------------------------- Método para Inicializar el Carrito ----------
-const initializeCart = (cart) =>{
+const initializeCart = (cart) => {
   const productList = cart.obtenerCarrito().products;
 
   //Indicar la cantidad de productos existentes en el carrito
@@ -86,8 +86,8 @@ const update = (cart) => {
 //--------------------------------------------------------------------------- Método para Imprimir el carrito --------
 const printCart = (cart) => {
   productRow.innerHTML = '';
+
   const productList = cart.products;
-  //console.log(cart.total)
   productList.forEach((elem)=>{
     templateProductRow.querySelector('.table-product-name').textContent = elem.title
     templateProductRow.querySelector('.table-product-ref').textContent = 'Ref: ' + elem.SKU
@@ -100,25 +100,24 @@ const printCart = (cart) => {
     const clone = templateProductRow.cloneNode(true)
     fragment.appendChild(clone)
   });
-
-  document.querySelector('.last-ul span').textContent = Math.round((cart.total * 100))/ 100 + cart.currency;
-  updateTotalTable(cart)
-
   productRow.appendChild(fragment);
+
+  printTotalTable(cart);
 }
 
-const updateTotalTable = (cart) =>{
+//--------------------------------------------------------------------------- Método para imprimir la tabla del Total --------
+const printTotalTable = (cart) => {
   productRowTotalTable.innerHTML = '';
+  document.querySelector('.last-ul span').textContent = Math.round((cart.total * 100))/ 100 + cart.currency;
   const productList = cart.products;
   productList.forEach((elem)=>{
     if(elem.quantity !== 0){
       templateTotalTable.querySelectorAll('li')[0].textContent = elem.title
       templateTotalTable.querySelector('span').textContent = Math.round((elem.price * elem.quantity * 100))/ 100 + cart.currency
    
-      const clone2 = templateTotalTable.cloneNode(true)
-      fragment2.appendChild(clone2)
+      const clone = templateTotalTable.cloneNode(true)
+      fragment.appendChild(clone)
     }
   });
-  productRowTotalTable.appendChild(fragment2);
-
+  productRowTotalTable.appendChild(fragment)
 }
