@@ -37,4 +37,19 @@ export class Carrito {
     
     return suma;
   }
+
+  adicionarProducto(producto){
+    const productList = this.api.products;
+    let exist = false;
+    for (let i = 0; i < productList.length; i++) {
+      const elem = productList[i];
+      if (elem.SKU === producto.SKU) {
+        elem.quantity++;
+        exist = true;
+        break;      
+      }      
+    }
+    if (!exist)
+      this.api.products.push(producto);    
+  }
 }

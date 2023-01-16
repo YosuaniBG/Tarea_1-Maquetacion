@@ -6,7 +6,6 @@ const productRowTotalTable = document.querySelector(".product-row-total-table");
 const templateTotalTable = document.getElementById("template-total-table").content;
 
 const fragment = document.createDocumentFragment()
-const fragment2 = document.createDocumentFragment()
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -56,6 +55,23 @@ const getProductAPI = async () => {
               }
             }
           })
+
+          //Añadir producto al carrito
+          document.querySelector('.accesories').addEventListener('click', e =>{
+            if(e.target.classList.contains('add-cart-btn')){
+              const card = e.target.parentElement;
+              const product = {
+                SKU: card.querySelector('.add-cart-btn').dataset.id,
+                title: card.querySelector('h3').textContent,
+                price: parseFloat(card.querySelector('.price').textContent),
+                quantity: 1
+              };
+              cart.adicionarProducto(product);
+              update(cart);
+            }
+          })
+
+
         });
       }
     );
@@ -80,6 +96,7 @@ const initializeCart = (cart) => {
 
 //-------------------------------------------------------------------------- Método para Actualizar ---------
 const update = (cart) => {
+  document.querySelector(".full").textContent = cart.obtenerCarrito().products.length;
   printCart(cart.obtenerCarrito())
 }
 
