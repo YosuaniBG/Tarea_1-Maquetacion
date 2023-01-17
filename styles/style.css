@@ -59,6 +59,7 @@ p {
 }
 
 .nav-container {
+    position: relative;
     height: 70px;
     display: flex;
     justify-content: space-between;
@@ -66,11 +67,10 @@ p {
     width: 85%;
     max-width: 1200px;
     margin: auto;
-
 }
 
-.logotipo {
 
+.logotipo {
     width: 120px;
     height: 60px;
 }
@@ -80,8 +80,11 @@ p {
     height: 100%;
 }
 
+
 .menu-full {
     display: inline;
+    position: relative;
+    z-index: 1;
 }
 
 .menu-hidden {
@@ -90,36 +93,22 @@ p {
 }
 
 .navbar {
-    /*
     display: flex;
-    flex-direction: column;
     position: fixed;
-    top: 71px;
-    left: -200px;
-    gap: 40px;
-    background-color: rgba(50, 49, 49, 0.5);
-    padding: 30px 30px 0 30px;
-    height: 100%;
-    list-style: none;
-    transition: left 0.5s ease;
-    */
-    display: flex;
-    z-index: 999;
     flex-direction: column;
-    position: absolute;
+    align-items: center;
     width: 100%;
-    top: -500px;
-    left: 0;
+    top: 71px;
+    left: -1000px;
     gap: 40px;
     background-color: rgba(50, 49, 49, 0.5);
     padding: 30px 30px 30px 30px;
     list-style: none;
-    transition: top 0.5s ease;
-    
+    transition: left 0.4s;
 }
 
 .navbar-show{
-    top: 71px;
+    left: 0px;
 }
 
 .nav-item a {
@@ -146,7 +135,6 @@ a.nav-link:hover {
 }
 
 .cart-img {
-    /*font-size: 25px;*/
     width: 35px;
 }
 
@@ -248,7 +236,7 @@ a.nav-link:hover {
 
 .header-row ul, .product-row ul{
     padding: 30px 10px;
-  1000  font-size: 14px;
+    font-size: 14px;
     font-weight: 600;
 }
 
