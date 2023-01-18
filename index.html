@@ -52,7 +52,7 @@
     <div class="offcanvas-container">
       <div class="offcanvas-backdrop"></div>
       <div class="cart-container">
-        <span class="close">X</span>
+        <!-- <span class="close">X</span> -->
         <div class="tables-section">
           <div class="table-products-container">
             <div class="header-row">
@@ -61,6 +61,7 @@
                 <li>Cantidad</li>
                 <li>Unidad</li>
                 <li>Total</li>
+                <li>Acción</li>
               </ul>
             </div>
             <div class="product-row">
@@ -81,32 +82,37 @@
                   </li>
                   <li><span id="product-price">$ 00.00</span></li>
                   <li><span id="product-cost">$ 00.00</span></li>
+                  <li><i class="fa-solid fa-trash-can"></i></li>
                 </ul>
               </template>
             </div>
           </div>
-          <div class="table-total-container">
-            <ul class="first-ul">
-              <li>Total</li>
-            </ul>
-            <div class="product-row-total-table">
-              <template id="template-total-table">
-                <ul class="">
-                  <li>Producto 1</li>
-                  <li><span>$ 00.00</span></li>
-                </ul>
-              </template>
+          <div class="table-total-and-cart-buttons-container">
+            <div class="table-total-container">
+              <ul class="first-ul">
+                <li>Total</li>
+              </ul>
+              <div class="product-row-total-table">
+                <template id="template-total-table">
+                  <ul class="">
+                    <li>Producto 1</li>
+                    <li><span>$ 00.00</span></li>
+                  </ul>
+                </template>
+              </div>
+              <ul class="last-ul">
+                <li class="li-total">TOTAL</li>
+                <li><span>$ 00.00</span></li>
+              </ul>
             </div>
-            <ul class="last-ul">
-              <li class="li-total">TOTAL</li>
-              <li><span>$ 00.00</span></li>
-            </ul>
+            <div class="cart-buttons">
+              <button class="big-btn btn-empty-cart">Vaciar carrito</button>
+              <button class="big-btn btn-cart-buy">Comprar</button>
+            </div>
           </div>
+          
         </div>
-        <div class="cart-buttons">
-          <button class="big-btn btn-empty-cart">Vaciar carrito</button>
-          <button class="big-btn btn-cart-buy">Comprar</button>
-        </div>
+        
       </div>
     </div>
     <!--fin seccion de pago-->
@@ -157,8 +163,8 @@
               </p>
             </div>
             <div class="buy">
-              <h2 class="cost">938,99€</h2>
-              <a class="buy-btn big-btn" href="#">Comprar ahora</a>
+              <h2 class="cost">938.99€</h2>
+              <a data-id="0K3QOSOV4V" class="buy-btn big-btn" href="#">Comprar ahora</a>
             </div>
             <div class="feature-plus">
               <div class="feature-plus-item">

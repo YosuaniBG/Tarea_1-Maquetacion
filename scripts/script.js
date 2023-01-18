@@ -8,16 +8,20 @@ const templateTotalTable = document.getElementById("template-total-table").conte
 const fragment = document.createDocumentFragment()
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".cart-img").addEventListener("click", () => {
-    document
-      .querySelector(".cart-container")
-      .classList.toggle("show-cart-container");
-    document.querySelector("body").classList.toggle("hidden-scroll-y");
-    document
-      .querySelector(".offcanvas-backdrop")
-      .classList.toggle("show-offcanvas-backdrop");
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.cart-img').addEventListener('click', () => {
+    toggleCartMenu();
   });
+
+  document.querySelector('.offcanvas-backdrop').addEventListener("click", () => {
+    toggleCartMenu();
+  });
+
+  const toggleCartMenu = () => {
+    document.querySelector('.cart-container').classList.toggle('show-cart-container');
+    document.querySelector('body').classList.toggle('hidden-scroll-y');
+    document.querySelector('.offcanvas-backdrop').classList.toggle('show-offcanvas-backdrop');
+  }
 
   document.querySelector(".fa-bars").addEventListener("click", () => {
     document.querySelector(".navbar").classList.toggle("navbar-show");
@@ -38,25 +42,48 @@ const getProductAPI = async () => {
 
           initializeCart(cart);
 
-          //Acciones de los botones Incremento y Decremento
+          //Acciones de los botones Incremento, Decremento y Delete
           productRow.addEventListener('click', e =>{
             if(e.target.classList.contains('inc')){
-              cart.api.products.find((elem) => {
+              cart.obtenerCarrito().products.find((elem) => {
                 return elem.SKU === e.target.dataset.id;
               }).quantity++;
               update(cart);
             }
             if(e.target.classList.contains('dec')){
-              if(cart.api.products.find((elem) => { return elem.SKU === e.target.dataset.id}).quantity > 0){
-                cart.api.products.find((elem) => {
+              if(cart.obtenerCarrito().products.find((elem) => { return elem.SKU === e.target.dataset.id}).quantity > 0){
+                cart.obtenerCarrito().products.find((elem) => {
                   return elem.SKU === e.target.dataset.id;
                 }).quantity--;
                 update(cart);
               }
             }
+            if(e.target.classList.contains('fa-trash-can')){
+              cart.eliminarProducto(e.target.dataset.id)
+              if(cart.obtenerCarrito().products.length === 0){
+                update(cart);
+                productRow.innerHTML = '<span class="text-cart-empty">Todos los productos en el carrito ha sido eliminados, por favor inserte nuevos productos</span>';
+              }else
+                update(cart);
+            }
           })
 
           //Añadir producto al carrito
+          document.querySelector('.producto-description').addEventListener('click', e =>{
+            if(e.target.classList.contains('buy-btn')){
+              const card = e.target.parentElement;
+              const product = {
+                SKU: card.querySelector('.buy-btn').dataset.id,
+                title: "iFhone 13 Pro",
+                price: parseFloat(card.querySelector('.cost').textContent),
+                quantity: 1
+              };
+              cart.adicionarProducto(product);
+              update(cart);
+            }
+          })
+          
+          //Añadir producto al carrito (Accesorios)
           document.querySelector('.accesories').addEventListener('click', e =>{
             if(e.target.classList.contains('add-cart-btn')){
               const card = e.target.parentElement;
@@ -68,7 +95,16 @@ const getProductAPI = async () => {
               };
               cart.adicionarProducto(product);
               update(cart);
+             
+
             }
+          })
+
+          //Vaciar carrito
+          document.querySelector('.btn-empty-cart').addEventListener('click', () =>{
+            cart.obtenerCarrito().products = [];
+            update(cart)
+            productRow.innerHTML = '<span class="text-cart-empty">Todos los productos en el carrito ha sido eliminados, por favor inserte nuevos productos</span>';
           })
 
 
@@ -80,7 +116,7 @@ const getProductAPI = async () => {
   }
 };
 
-//------------------------------------------------------------------------- Método para Inicializar el Carrito ----------
+//-------------------------------------------------------- Método para Inicializar el Carrito ----------
 const initializeCart = (cart) => {
   const productList = cart.obtenerCarrito().products;
 
@@ -94,13 +130,13 @@ const initializeCart = (cart) => {
   printCart(cart.obtenerCarrito());
 }
 
-//-------------------------------------------------------------------------- Método para Actualizar ---------
+//------------------------------------------------------- Método para Actualizar ---------
 const update = (cart) => {
   document.querySelector(".full").textContent = cart.obtenerCarrito().products.length;
   printCart(cart.obtenerCarrito())
 }
 
-//--------------------------------------------------------------------------- Método para Imprimir el carrito --------
+//------------------------------------------------------- Método para Imprimir el carrito --------
 const printCart = (cart) => {
   productRow.innerHTML = '';
 
@@ -108,11 +144,12 @@ const printCart = (cart) => {
   productList.forEach((elem)=>{
     templateProductRow.querySelector('.table-product-name').textContent = elem.title
     templateProductRow.querySelector('.table-product-ref').textContent = 'Ref: ' + elem.SKU
-    templateProductRow.querySelector('#product-price').textContent = elem.price + cart.currency
-    templateProductRow.querySelector('#product-cost').textContent =  Math.round((elem.price * elem.quantity * 100))/ 100 + cart.currency
     templateProductRow.querySelector('#amount').value = elem.quantity
     templateProductRow.querySelector('.dec').dataset.id = elem.SKU
     templateProductRow.querySelector('.inc').dataset.id = elem.SKU
+    templateProductRow.querySelector('#product-price').textContent = elem.price + cart.currency
+    templateProductRow.querySelector('#product-cost').textContent =  Math.round((elem.price * elem.quantity * 100))/ 100 + cart.currency
+    templateProductRow.querySelector('.fa-trash-can').dataset.id = elem.SKU
     
     const clone = templateProductRow.cloneNode(true)
     fragment.appendChild(clone)

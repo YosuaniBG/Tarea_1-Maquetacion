@@ -180,9 +180,9 @@ a.nav-link:hover {
     top: -900px;
     max-width: 1400px;
     width: 90vw;
-    height: 700px;
+    /* height: 650px; */
     margin-top: 70px;
-    padding: 60px;
+    padding: 30px 60px 60px 60px;
     z-index: 999;
     transition: top .5s ease;
     border: var(--borderLight);
@@ -198,7 +198,7 @@ a.nav-link:hover {
     top: 0;
 }
 
-.close{
+/* .close{
     position: absolute;
     right: 60px;
     top: 12px;
@@ -208,7 +208,7 @@ a.nav-link:hover {
     padding: 4px 8px;
     border: var(--borderLight);
     border-radius: 3px;
-}
+} */
 
 .tables-section {
     display: flex;
@@ -234,10 +234,21 @@ a.nav-link:hover {
 }
 
 
-.header-row ul, .product-row ul{
+.header-row ul{
+    padding: 30px 20px 30px 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.product-row ul{
     padding: 30px 10px;
     font-size: 14px;
     font-weight: 600;
+}
+
+.header-row li, .product-row li{
+    width: 25%;
+    text-align: center;
 }
 
 .header-row li:first-child, 
@@ -246,15 +257,48 @@ a.nav-link:hover {
     text-align: left;
 }
 
-.header-row li, .product-row li{
-    width: 25%;
-    text-align: center;
+.product-row {
+    height: 460px;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0px 10px 0 0;
 }
+ /*Estilo para barra del scroll*/
+
+.product-row::-webkit-scrollbar {
+    -webkit-appearance: none;
+    /* display: none; */
+   
+}
+
+.product-row::-webkit-scrollbar:vertical {
+    width:7px;
+}
+
+.product-row::-webkit-scrollbar-button:increment,
+.product-row::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.product-row::-webkit-scrollbar-thumb {
+    background-color: #cfcbcb;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.product-row::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+ /*-----------------------------------*/
 
 .product-row ul:nth-child(even){
     background-color: #f9f9f9;
     border-top: rgb(233, 233, 233) solid 1px;
     border-bottom: rgb(233, 233, 233) solid 1px;
+}
+
+.fa-trash-can:hover{
+    cursor: pointer;
 }
 
 .table-product-ref {
@@ -279,11 +323,18 @@ a.nav-link:hover {
     cursor: pointer;
 }
 
+.table-total-and-cart-buttons-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    width: 25%;
+}
 
 .table-total-container {
     background-color: #f9f9f9;
     padding: 0 20px;
-    width: 25%;
+    width: 100%;
 }
 
 .table-total-container ul{
@@ -313,9 +364,8 @@ a.nav-link:hover {
 }
 
 .cart-buttons {
-    margin-top: 50px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -342,6 +392,13 @@ a.nav-link:hover {
 
 .hidden-scroll-x {
     overflow-x: hidden;
+}
+
+.text-cart-empty{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 15px 0; 
 }
 
 /* ---------------- MAIN - SECTIONS ------------------------*/
