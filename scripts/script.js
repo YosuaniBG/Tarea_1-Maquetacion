@@ -10,24 +10,39 @@ const fragment = document.createDocumentFragment()
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.cart-img').addEventListener('click', () => {
-    toggleCartMenu();
+    if(document.querySelector(".navbar").classList.contains("navbar-show"))
+      hiddenMenu();
+    toggleCartDisplay();
   });
 
   document.querySelector('.offcanvas-backdrop').addEventListener("click", () => {
-    toggleCartMenu();
+    toggleCartDisplay();
   });
 
-  const toggleCartMenu = () => {
-    document.querySelector('.cart-container').classList.toggle('show-cart-container');
-    document.querySelector('body').classList.toggle('hidden-scroll-y');
-    document.querySelector('.offcanvas-backdrop').classList.toggle('show-offcanvas-backdrop');
-  }
+  
 
   document.querySelector(".fa-bars").addEventListener("click", () => {
+    if(document.querySelector('.cart-container').classList.contains('show-cart-container'))
+      toggleCartDisplay();
     document.querySelector(".navbar").classList.toggle("navbar-show");
+
+    if(document.querySelector(".navbar").classList.contains("navbar-show"))
+      document.querySelector(".cart-img").setAttribute('src','images/cart_empty_white.png');
+    else
+      document.querySelector(".cart-img").setAttribute('src','images/cart_empty_blue.png');
+  
     document.querySelector("main").classList.toggle("main-translate");
-    document.querySelector("body").classList.toggle("hidden-scroll-x");
   });
+
+  document.addEventListener('scroll', () => {
+    hiddenMenu(); 
+  });
+
+  window.addEventListener('resize', () => {
+    if(document.querySelector(".navbar").classList.contains("navbar-show"))
+      hiddenMenu(); 
+  });
+
 
   getProductAPI();
 
@@ -39,7 +54,7 @@ const getProductAPI = async () => {
       (result) => {
         result.json().then((datos) => {
           const cart = new Carrito(datos);
-
+ 
           initializeCart(cart);
 
           //Acciones de los botones Incremento, Decremento y Delete
@@ -68,7 +83,7 @@ const getProductAPI = async () => {
             }
           })
 
-          //Añadir producto al carrito
+          //Añadir producto al carrito (Telefono)
           document.querySelector('.producto-description').addEventListener('click', e =>{
             if(e.target.classList.contains('buy-btn')){
               const card = e.target.parentElement;
@@ -95,8 +110,6 @@ const getProductAPI = async () => {
               };
               cart.adicionarProducto(product);
               update(cart);
-             
-
             }
           })
 
@@ -106,7 +119,6 @@ const getProductAPI = async () => {
             update(cart)
             productRow.innerHTML = '<span class="text-cart-empty">Todos los productos en el carrito ha sido eliminados, por favor inserte nuevos productos</span>';
           })
-
 
         });
       }
@@ -119,7 +131,7 @@ const getProductAPI = async () => {
 //-------------------------------------------------------- Método para Inicializar el Carrito ----------
 const initializeCart = (cart) => {
   const productList = cart.obtenerCarrito().products;
-
+ 
   //Indicar la cantidad de productos existentes en el carrito
   document.querySelector(".full").textContent = productList.length;
 
@@ -159,7 +171,7 @@ const printCart = (cart) => {
   printTotalTable(cart);
 }
 
-//--------------------------------------------------------------------------- Método para imprimir la tabla del Total --------
+//---------------------------------------------------------- Método para imprimir la tabla del Total --------
 const printTotalTable = (cart) => {
   productRowTotalTable.innerHTML = '';
   document.querySelector('.last-ul span').textContent = Math.round((cart.total * 100))/ 100 + cart.currency;
@@ -174,4 +186,17 @@ const printTotalTable = (cart) => {
     }
   });
   productRowTotalTable.appendChild(fragment)
+}
+
+//------------------------------------------------------------ Funciones para los elementos offcanvas -----
+const toggleCartDisplay = () => {
+  document.querySelector('.cart-container').classList.toggle('show-cart-container');
+  document.querySelector('body').classList.toggle('hidden-scroll-y');
+  document.querySelector('.offcanvas-backdrop').classList.toggle('show-offcanvas-backdrop');
+}
+
+const hiddenMenu = () => {
+  document.querySelector(".navbar").classList.remove("navbar-show");
+  document.querySelector(".cart-img").setAttribute('src','images/cart_empty_blue.png');
+  document.querySelector("main").classList.remove("main-translate");
 }
