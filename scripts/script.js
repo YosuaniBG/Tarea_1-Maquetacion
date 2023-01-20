@@ -9,18 +9,24 @@ const fragment = document.createDocumentFragment()
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  //Mostar Display del Carrito
   document.querySelector('.cart-img').addEventListener('click', () => {
     if(document.querySelector(".navbar").classList.contains("navbar-show"))
       hiddenMenu();
     toggleCartDisplay();
   });
 
+  //Ocultar Display del Carrito
   document.querySelector('.offcanvas-backdrop').addEventListener("click", () => {
+    toggleCartDisplay();
+  });
+  document.querySelector('.fa-arrow-up-from-bracket').addEventListener("click", () => {
     toggleCartDisplay();
   });
 
   
-
+  // Mostrar Menú al hacer click en las barras
   document.querySelector(".fa-bars").addEventListener("click", () => {
     if(document.querySelector('.cart-container').classList.contains('show-cart-container'))
       toggleCartDisplay();
@@ -34,10 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector("main").classList.toggle("main-translate");
   });
 
+  // Ocultar Menú al hacer scrolling
   document.addEventListener('scroll', () => {
     hiddenMenu(); 
   });
 
+  // Ocultar Menú al hacer dimensionar la ventana
   window.addEventListener('resize', () => {
     if(document.querySelector(".navbar").classList.contains("navbar-show"))
       hiddenMenu(); 
@@ -83,7 +91,7 @@ const getProductAPI = async () => {
             }
           })
 
-          //Añadir producto al carrito (Telefono)
+          //Añadir producto al carrito (Teléfono)
           document.querySelector('.producto-description').addEventListener('click', e =>{
             if(e.target.classList.contains('buy-btn')){
               const card = e.target.parentElement;
@@ -110,12 +118,21 @@ const getProductAPI = async () => {
               };
               cart.adicionarProducto(product);
               update(cart);
+
+              card.querySelector('.succefull').classList.toggle('show-succefull');
+              window.setTimeout(() => {
+                card.querySelector('.succefull').classList.toggle('show-succefull');
+              }, 700)
+            
             }
           })
 
           //Vaciar carrito
           document.querySelector('.btn-empty-cart').addEventListener('click', () =>{
-            cart.obtenerCarrito().products = [];
+            const productList = cart.obtenerCarrito().products;
+            while (productList.length > 0) {
+               cart.eliminarProducto(productList[0].SKU);
+            }
             update(cart)
             productRow.innerHTML = '<span class="text-cart-empty">Todos los productos en el carrito ha sido eliminados, por favor inserte nuevos productos</span>';
           })
@@ -128,7 +145,7 @@ const getProductAPI = async () => {
   }
 };
 
-//-------------------------------------------------------- Método para Inicializar el Carrito ----------
+//-------------------------------------------------------- Función para Inicializar el Carrito ----------
 const initializeCart = (cart) => {
   const productList = cart.obtenerCarrito().products;
  
@@ -142,13 +159,13 @@ const initializeCart = (cart) => {
   printCart(cart.obtenerCarrito());
 }
 
-//------------------------------------------------------- Método para Actualizar ---------
+//------------------------------------------------------- Función para Actualizar ---------
 const update = (cart) => {
   document.querySelector(".full").textContent = cart.obtenerCarrito().products.length;
-  printCart(cart.obtenerCarrito())
+  printCart(cart.obtenerCarrito());
 }
 
-//------------------------------------------------------- Método para Imprimir el carrito --------
+//------------------------------------------------------- Función para Imprimir el carrito --------
 const printCart = (cart) => {
   productRow.innerHTML = '';
 
@@ -171,7 +188,7 @@ const printCart = (cart) => {
   printTotalTable(cart);
 }
 
-//---------------------------------------------------------- Método para imprimir la tabla del Total --------
+//---------------------------------------------------------- Función para imprimir la tabla del Total --------
 const printTotalTable = (cart) => {
   productRowTotalTable.innerHTML = '';
   document.querySelector('.last-ul span').textContent = Math.round((cart.total * 100))/ 100 + cart.currency;
