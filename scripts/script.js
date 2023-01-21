@@ -10,6 +10,15 @@ const fragment = document.createDocumentFragment()
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  //Cambiar imagen del producto principal
+  document.querySelector('.image-list').addEventListener('click', e => {
+    if(e.target.classList.contains('image-list-item')){
+      const url = e.target.getAttribute('src');
+      console.log(url);
+      document.querySelector('.product-main').setAttribute('src', url);
+    }
+  })
+
   //Mostar Display del Carrito
   document.querySelector('.cart-img').addEventListener('click', () => {
     if(document.querySelector(".navbar").classList.contains("navbar-show"))

@@ -108,6 +108,15 @@
         border-radius: 50%;
     }
 
+    .product-row ul{
+        font-size: 14px;
+    }
+
+    .product-row ul h2{
+        font-size: 18px;
+    }
+    
+
    
 
 /*---------PANTALLA SUPERIORES A  650px ---------------------------------------------*/
@@ -160,11 +169,11 @@
     }
 
     .product-row ul{
-        padding: 30px 10px;
+        padding: 20px 10px;
     }
 
     .product-row {
-        height: 465px;
+        height: 390px;
     }
 
     .table-total-and-cart-buttons-container{

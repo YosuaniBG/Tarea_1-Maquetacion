@@ -181,6 +181,7 @@ a.nav-link:hover {
     top: -900px;
     max-width: 1400px;
     width: 100vw;
+    height: 600px;
     margin-top: 70px;
     padding: 30px 30px 60px 30px;
     z-index: 999;
@@ -191,7 +192,10 @@ a.nav-link:hover {
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 20px;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .show-cart-container {
@@ -202,7 +206,6 @@ a.nav-link:hover {
     display: inline;
     font-size: 20px;
     align-self: flex-end;
-    margin-bottom: 20px;
 }
 
 .tables-section {
@@ -238,9 +241,15 @@ a.nav-link:hover {
 
 .product-row ul{
     padding: 10px 10px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
 }
+
+.product-row ul h2{
+    font-size: 15px;
+}
+
+
 
 .header-row li, .product-row li{
     width: 25%;
@@ -254,7 +263,7 @@ a.nav-link:hover {
 }
 
 .product-row {
-    height: 340px;
+    height: 250px;
     /* width: 380px; */
     overflow: hidden;
     overflow-y: scroll;
@@ -263,10 +272,12 @@ a.nav-link:hover {
 }
  /*Estilo para barra del scroll*/
 
-.product-row::-webkit-scrollbar {
+ .cart-container::-webkit-scrollbar {
     -webkit-appearance: none;
-    /* display: none; */
-   
+}
+
+.product-row::-webkit-scrollbar {
+    -webkit-appearance: none;   
 }
 
 .product-row::-webkit-scrollbar:vertical {
@@ -324,7 +335,7 @@ a.nav-link:hover {
 .table-total-and-cart-buttons-container{
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     align-items: flex-start;
     width: 100%;
 }
