@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.image-list').addEventListener('click', e => {
     if(e.target.classList.contains('image-list-item')){
       const url = e.target.getAttribute('src');
-      console.log(url);
       document.querySelector('.product-main').setAttribute('src', url);
     }
   })
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hiddenMenu(); 
   });
 
-  // Ocultar Menú al hacer dimensionar la ventana
+  // Ocultar Menú al dimensionar la ventana
   window.addEventListener('resize', () => {
     if(document.querySelector(".navbar").classList.contains("navbar-show"))
       hiddenMenu(); 
@@ -77,16 +76,12 @@ const getProductAPI = async () => {
           //Acciones de los botones Incremento, Decremento y Delete
           productRow.addEventListener('click', e =>{
             if(e.target.classList.contains('inc')){
-              cart.obtenerCarrito().products.find((elem) => {
-                return elem.SKU === e.target.dataset.id;
-              }).quantity++;
+              cart.obtenerInformacionProducto(e.target.dataset.id).quantity++;
               update(cart);
             }
             if(e.target.classList.contains('dec')){
-              if(cart.obtenerCarrito().products.find((elem) => { return elem.SKU === e.target.dataset.id}).quantity > 0){
-                cart.obtenerCarrito().products.find((elem) => {
-                  return elem.SKU === e.target.dataset.id;
-                }).quantity--;
+              if (cart.obtenerInformacionProducto(e.target.dataset.id).quantity > 0) {
+                cart.obtenerInformacionProducto(e.target.dataset.id).quantity--;
                 update(cart);
               }
             }

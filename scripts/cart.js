@@ -47,6 +47,7 @@ export class Carrito {
     return suma;
   }
 
+  //Métodos adicionales para complementar las funciones del carrito
   adicionarProducto(producto){
     const productList = this.#products;
     let exist = false;
