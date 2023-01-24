@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+//----------------------------------------------------------  Esencia ---------------------
 const getProductAPI = async () => {
   try {
     await fetch("https://jsonblob.com/api/1061116324926996480").then(
@@ -75,13 +76,22 @@ const getProductAPI = async () => {
 
           //Acciones de los botones Incremento, Decremento y Delete
           productRow.addEventListener('click', e =>{
+            if(e.target.classList.contains('count')){
+              e.target.addEventListener('input', () => {
+                cart.actualizarUnidades(e.target.dataset.id, parseInt(e.target.value));
+                update(cart); //TODO Corregir esta linea de codigo para que vuela el focus al input 
+                console.log(e.target.hasFocus);
+              })
+            }
             if(e.target.classList.contains('inc')){
-              cart.obtenerInformacionProducto(e.target.dataset.id).quantity++;
+              const unit = cart.obtenerInformacionProducto(e.target.dataset.id).quantity;
+              cart.actualizarUnidades(e.target.dataset.id, unit + 1);
               update(cart);
             }
             if(e.target.classList.contains('dec')){
               if (cart.obtenerInformacionProducto(e.target.dataset.id).quantity > 0) {
-                cart.obtenerInformacionProducto(e.target.dataset.id).quantity--;
+                const unit = cart.obtenerInformacionProducto(e.target.dataset.id).quantity;
+                cart.actualizarUnidades(e.target.dataset.id, unit - 1);
                 update(cart);
               }
             }
@@ -89,7 +99,7 @@ const getProductAPI = async () => {
               cart.eliminarProducto(e.target.dataset.id)
               if(cart.obtenerCarrito().products.length === 0){
                 update(cart);
-                productRow.innerHTML = '<span class="text-cart-empty">Todos los productos en el carrito ha sido eliminados, por favor inserte nuevos productos</span>';
+                productRow.innerHTML = '<span class="text-cart-empty">Todos los productos en el carrito han sido eliminados, por favor inserte nuevos productos</span>';
               }else
                 update(cart);
             }
@@ -138,7 +148,7 @@ const getProductAPI = async () => {
                cart.eliminarProducto(productList[0].SKU);
             }
             update(cart)
-            productRow.innerHTML = '<span class="text-cart-empty">Todos los productos en el carrito ha sido eliminados, por favor inserte nuevos productos</span>';
+            productRow.innerHTML = '<span class="text-cart-empty">Todos los productos en el carrito han sido eliminados, por favor inserte nuevos productos</span>';
           })
 
         });
@@ -178,6 +188,7 @@ const printCart = (cart) => {
     templateProductRow.querySelector('.table-product-name').textContent = elem.title
     templateProductRow.querySelector('.table-product-ref').textContent = 'Ref: ' + elem.SKU
     templateProductRow.querySelector('#amount').value = elem.quantity
+    templateProductRow.querySelector('#amount').dataset.id = elem.SKU
     templateProductRow.querySelector('.dec').dataset.id = elem.SKU
     templateProductRow.querySelector('.inc').dataset.id = elem.SKU
     templateProductRow.querySelector('#product-price').textContent = elem.price + cart.currency

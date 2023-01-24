@@ -46,6 +46,13 @@ p {
     font-size: 16px;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] { -moz-appearance:textfield; }
+
 /* ---------------- HEADER - NAVEGACIÓN -------------------------*/
 
 .header {
@@ -206,6 +213,10 @@ a.nav-link:hover {
     display: inline;
     font-size: 20px;
     align-self: flex-end;
+}
+
+.fa-arrow-up-from-bracket:hover{
+    cursor: pointer;
 }
 
 .tables-section {
