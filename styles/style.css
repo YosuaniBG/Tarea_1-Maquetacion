@@ -275,9 +275,9 @@ a.nav-link:hover {
 
 .product-row {
     height: 250px;
-    /* width: 380px; */
     overflow: hidden;
     overflow-y: scroll;
+    overflow-x: scroll;
     padding: 0px 10px 0 0;
     border-bottom: var(--borderWide);
 }
@@ -293,6 +293,10 @@ a.nav-link:hover {
 
 .product-row::-webkit-scrollbar:vertical {
     width:7px;
+}
+
+.product-row::-webkit-scrollbar:horizontal{
+    height: 7px;
 }
 
 .product-row::-webkit-scrollbar-button:increment,

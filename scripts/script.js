@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleCartDisplay();
   });
 
-  //Ocultar Display del Carrito
+  //Ocultar Display del Carrito al hacer click en el backdrop o la flecha hacia arriba
   document.querySelector('.offcanvas-backdrop').addEventListener("click", () => {
     toggleCartDisplay();
   });
@@ -74,13 +74,12 @@ const getProductAPI = async () => {
  
           initializeCart(cart);
 
-          //Acciones de los botones Incremento, Decremento y Delete
+          //Acciones de los botones Incremento, Decremento, Delete e Input
           productRow.addEventListener('click', e =>{
             if(e.target.classList.contains('count')){
-              e.target.addEventListener('input', () => {
-                cart.actualizarUnidades(e.target.dataset.id, parseInt(e.target.value));
-                update(cart); //TODO Corregir esta linea de codigo para que vuela el focus al input 
-                console.log(e.target.hasFocus);
+              e.target.addEventListener('change', () => {
+                cart.actualizarUnidades(e.target.id, parseInt(e.target.value));                
+                update(cart);
               })
             }
             if(e.target.classList.contains('inc')){
@@ -137,7 +136,6 @@ const getProductAPI = async () => {
               window.setTimeout(() => {
                 card.querySelector('.succefull').classList.toggle('show-succefull');
               }, 700)
-            
             }
           })
 
@@ -187,8 +185,8 @@ const printCart = (cart) => {
   productList.forEach((elem)=>{
     templateProductRow.querySelector('.table-product-name').textContent = elem.title
     templateProductRow.querySelector('.table-product-ref').textContent = 'Ref: ' + elem.SKU
-    templateProductRow.querySelector('#amount').value = elem.quantity
-    templateProductRow.querySelector('#amount').dataset.id = elem.SKU
+    templateProductRow.querySelector('.count').value = elem.quantity
+    templateProductRow.querySelector('.count').id = elem.SKU
     templateProductRow.querySelector('.dec').dataset.id = elem.SKU
     templateProductRow.querySelector('.inc').dataset.id = elem.SKU
     templateProductRow.querySelector('#product-price').textContent = elem.price + cart.currency
