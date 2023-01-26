@@ -26,12 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   //Ocultar Display del Carrito al hacer click en el backdrop o la flecha hacia arriba
-  document.querySelector('.offcanvas-backdrop').addEventListener("click", () => {
-    toggleCartDisplay();
-  });
-  document.querySelector('.fa-arrow-up-from-bracket').addEventListener("click", () => {
-    toggleCartDisplay();
-  });
+  document.querySelector('.offcanvas-backdrop').addEventListener("click", toggleCartDisplay);
+  document.querySelector('.fa-arrow-up-from-bracket').addEventListener("click", toggleCartDisplay);
 
   
   // Mostrar Menú al hacer click en las barras
@@ -49,9 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Ocultar Menú al hacer scrolling
-  document.addEventListener('scroll', () => {
-    hiddenMenu(); 
-  });
+  document.addEventListener('scroll', hiddenMenu);
 
   // Ocultar Menú al dimensionar la ventana
   window.addEventListener('resize', () => {
@@ -65,9 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //----------------------------------------------------------  Esencia ---------------------
-const getProductAPI = async () => {
+const getProductAPI = () => {
   try {
-    await fetch("https://jsonblob.com/api/1061116324926996480").then(
+     fetch("https://jsonblob.com/api/1061116324926996480").then(
       (result) => {
         result.json().then((datos) => {
           const cart = new Carrito(datos);
@@ -76,26 +70,28 @@ const getProductAPI = async () => {
 
           //Acciones de los botones Incremento, Decremento, Delete e Input
           productRow.addEventListener('click', e =>{
+            const sku = e.target.dataset.id
+
             if(e.target.classList.contains('count')){
               e.target.addEventListener('change', () => {
-                cart.actualizarUnidades(e.target.id, parseInt(e.target.value));                
+                const inputValue = parseInt(e.target.value)
+                if(inputValue >= 0)
+                  cart.actualizarUnidades(e.target.id, inputValue);                
                 update(cart);
               })
             }
             if(e.target.classList.contains('inc')){
-              const unit = cart.obtenerInformacionProducto(e.target.dataset.id).quantity;
-              cart.actualizarUnidades(e.target.dataset.id, unit + 1);
+              cart.actualizarUnidades(sku, cart.obtenerInformacionProducto(sku).quantity + 1);
               update(cart);
             }
             if(e.target.classList.contains('dec')){
-              if (cart.obtenerInformacionProducto(e.target.dataset.id).quantity > 0) {
-                const unit = cart.obtenerInformacionProducto(e.target.dataset.id).quantity;
-                cart.actualizarUnidades(e.target.dataset.id, unit - 1);
+              if (cart.obtenerInformacionProducto(sku).quantity > 0) {
+                cart.actualizarUnidades(sku, cart.obtenerInformacionProducto(sku).quantity - 1);
                 update(cart);
               }
             }
             if(e.target.classList.contains('fa-trash-can')){
-              cart.eliminarProducto(e.target.dataset.id)
+              cart.eliminarProducto(sku)
               if(cart.obtenerCarrito().products.length === 0){
                 update(cart);
                 productRow.innerHTML = '<span class="text-cart-empty">Todos los productos en el carrito han sido eliminados, por favor inserte nuevos productos</span>';
