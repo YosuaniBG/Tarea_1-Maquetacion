@@ -11,7 +11,7 @@ export class Carrito {
 
   //Actualiza el valor quantity del objeto, si este no existe lo crea y le asigna el valor (units)
   actualizarUnidades(sku, units) {
-    this.#products.find((elem) => elem.SKU === sku).quantity = units;
+    this.#products.find((elem) => elem.SKU === sku)['quantity'] = units;
   }
 
   //Muestra la informacion de un producto determinado como la propiedad quantity inicializada en 0
