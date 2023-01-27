@@ -14,9 +14,12 @@ export class Carrito {
     this.#products.find((elem) => elem.SKU === sku).quantity = units;
   }
 
-  //Muestra la informacion de un producto determinado como un objeto
+  //Muestra la informacion de un producto determinado como la propiedad quantity inicializada en 0
   obtenerInformacionProducto(sku) {
-    return this.#products.find((elem) => elem.SKU === sku);
+    return this.#products.find((elem) => {
+      if(elem.SKU === sku)
+        return elem
+    });
   }
 
   obtenerCarrito() {
