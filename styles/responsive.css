@@ -45,6 +45,7 @@
     .cart-container {
         width: 100vw;
         padding: 30px 30px 60px 30px;
+        height: 700px;
     }
 
     .product-row {
@@ -156,6 +157,7 @@
     .cart-container {
         width: 90vw;
         padding: 30px 60px 60px 60px;
+        height: 600px;
     }
 
     .tables-section {

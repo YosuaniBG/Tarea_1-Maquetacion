@@ -64,6 +64,7 @@ const getProductAPI = () => {
      fetch("https://jsonblob.com/api/1061116324926996480").then(
       (result) => {
         result.json().then((datos) => {
+          
           const cart = new Carrito(datos);
  
           initializeCart(cart);
